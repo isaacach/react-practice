@@ -1,4 +1,4 @@
- import { useState } from 'react';
+ import { useEffect, useState } from 'react';
  import BookCreate from './components/BookCreate.jsx';
  import BookList from './components/BookList.jsx';
 
@@ -8,17 +8,61 @@
 
   const [books, setBooks] = useState([]);
 
-  const handleDeleteBook = (id) => {
-    setBooks(books.filter((book) => book.id !== id));
+  const getAllBooks = async () => {
+    const response = await fetch('http://localhost:3001/books');
+    const data = await response.json();
+    setBooks(data);
   };
 
-  const handleBookCreate = (book) => {
-    setBooks([...books, {id: books.length + 1, title: book}]);
-    console.log(books);
+  useEffect(() => {
+    getAllBooks();
+  }, []);
+
+  const handleDeleteBook = async (id) => {
+    const response = await fetch(`http://localhost:3001/books/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.status === 200) {
+      const newBooks = books.filter(book => book.id !== id);
+      setBooks(newBooks);
+    }
   };
 
-  const handleEditBook = (id, newTitle) => {
-    books.map(book => book.id === id ? book.title = newTitle : book)
+  const handleBookCreate = async (book) => {
+    const response = await fetch('http://localhost:3001/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {"title": book}
+      )
+    });
+    const newBook = await response.json();
+    setBooks([...books, newBook]);
+    
+  };
+
+  const handleEditBook = async (id, newTitle) => {
+    const response = await fetch(`http://localhost:3001/books/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {"title": newTitle}
+      )
+    });
+    if (response.status === 200) {
+      const newBooks = books.map(book => {
+        if (book.id === id) {
+          book.title = newTitle;
+        }
+        return book;
+      });
+      setBooks(newBooks);
+    }
+    
   }
 
   return (

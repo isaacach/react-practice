@@ -1,3 +1,20 @@
 {
-  "books": []
+  "books": [
+    {
+      "title": "book 1",
+      "id": 1
+    },
+    {
+      "title": "Of mice and men",
+      "id": 2
+    },
+    {
+      "title": "The charisma myth",
+      "id": 3
+    },
+    {
+      "title": "Harry Potter 2",
+      "id": 4
+    }
+  ]
 }
