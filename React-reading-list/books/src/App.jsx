@@ -67,6 +67,7 @@
 
   return (
     <div className="App">
+      <h1>Reading List</h1>
       <BookCreate onCreate={handleBookCreate} />
       <BookList books={books} onDelete={handleDeleteBook} onEdit={handleEditBook}/>
     </div>
