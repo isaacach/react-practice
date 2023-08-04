@@ -5,10 +5,6 @@
       "id": 1
     },
     {
-      "title": "Of mice and men",
-      "id": 2
-    },
-    {
       "title": "The charisma myth",
       "id": 3
     },
@@ -23,6 +19,10 @@
     {
       "title": "Berserk",
       "id": 6
+    },
+    {
+      "title": "Lord of the Rings 2",
+      "id": 7
     }
   ]
 }
