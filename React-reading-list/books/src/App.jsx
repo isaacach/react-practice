@@ -56,7 +56,7 @@
     if (response.status === 200) {
       const newBooks = books.map(book => {
         if (book.id === id) {
-          book.title = newTitle;
+          return {...book, ...response.data}
         }
         return book;
       });
