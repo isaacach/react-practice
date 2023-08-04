@@ -1,15 +1,11 @@
 {
   "books": [
     {
-      "title": "book 1",
-      "id": 1
-    },
-    {
       "title": "The charisma myth",
       "id": 3
     },
     {
-      "title": "Harry Potter 2",
+      "title": "Harry Potter 3",
       "id": 4
     },
     {
@@ -23,6 +19,10 @@
     {
       "title": "Lord of the Rings 2",
       "id": 7
+    },
+    {
+      "title": "book 99",
+      "id": 8
     }
   ]
 }
