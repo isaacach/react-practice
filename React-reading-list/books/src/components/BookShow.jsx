@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import BookEdit from "./BookEdit";
-import { useState, useContext } from "react";
-import BooksContext from "../context/books.jsx";
-
+import { useState } from "react";
+import useBooksContext from "../hooks/use-books-context";
 
 export default function BookShow({ book }) {
   const [edit, setEdit] = useState(false);
-  const { handleDeleteBook } = useContext(BooksContext);
+  const { handleDeleteBook } = useBooksContext();
 
   const handleDeleteClick = () => {
     handleDeleteBook(book.id);

@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState, useContext } from "react";
+import { useState } from "react";
 import BooksContext from "../context/books.jsx";
 
 export default function BookCreate() {
-
   const [bookTitle, setBookTitle] = useState('');
-  const { handleBookCreate } = useContext(BooksContext);
+  const { handleBookCreate } = BooksContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
