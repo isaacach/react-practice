@@ -5,7 +5,7 @@
       "id": 3
     },
     {
-      "title": "Harry Potter 3",
+      "title": "Harry Potter 2",
       "id": 4
     },
     {
@@ -17,12 +17,8 @@
       "id": 6
     },
     {
-      "title": "Lord of the Rings 2",
+      "title": "Lord of the Rings",
       "id": 7
-    },
-    {
-      "title": "book 99",
-      "id": 8
     }
   ]
 }
