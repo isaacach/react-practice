@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import className from 'classnames';
 
 export default function Button({ children, primary, secondary, success, warning, danger, outline, rounded }) {
 
@@ -21,10 +22,20 @@ export default function Button({ children, primary, secondary, success, warning,
     }
   }
 
-  
+  const classes = className({
+    'bg-blue-500 border-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4': primary,
+    'bg-gray-500 border-gray-700 hover:bg-gray-700 text-white font-bold py-2 px-4': secondary,
+    'bg-green-500 border-green-700 hover:bg-green-700 text-white font-bold py-2 px-4': success,
+    'bg-yellow-500 border-yellow-700 hover:bg-yellow-700 text-white font-bold py-2 px-4': warning,
+    'bg-red-500 border-red-700 hover:bg-red-700 text-white font-bold py-2 px-4': danger,
+    'border-2': outline,
+    'rounded-full': rounded
+  });
+
+
 
 
   return (
-    <button>{children}</button>
+    <button className={classes}>{children}</button>
   )
 }
