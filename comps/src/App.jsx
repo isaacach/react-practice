@@ -1,38 +1,25 @@
-import Button from "./Button";
-import { HiOutlineCode, HiOutlineMoon, HiOutlineSparkles } from "react-icons/hi"; 
+import Accordion from "./components/Accordion";
 
 export default function App() {
 
-  const handleClick = () => {
-    console.log('clicked');
-  }
+  const items = [
+    {
+      id: 1,
+      title: 'What is React?',
+      content: 'React is a front end javascript framework that is used to build UIs and SPAs (Single Page Applications) in a declarative way using components' 
+    },
+    {
+      id: 2,
+      title: 'Why use React?',
+      content: 'React is a favorite JS library among engineers'
+    },
+    {
+      id: 3,
+      title: 'How do you use React?',
+      content: 'You use React by creating components'
+    }
+  ]
 
-  return (
-    <div>
-      <div>
-        <Button primary rounded className='mb-5' onClick={handleClick}>
-          <HiOutlineCode />
-          Click me!
-          </Button>
-      </div>
-      <div>
-        <Button secondary outline>
-          <HiOutlineMoon />
-          Click here!
-          </Button>
-      </div>
-      <div>
-        <Button success rounded outline>
-          <HiOutlineSparkles />
-          button
-          </Button>
-      </div>
-      <div>
-        <Button warning>button2</Button>
-      </div>
-      <div>
-        <Button danger>button3</Button>
-      </div>
-    </div>
-  );
+  return <Accordion items={items} />
+  
 }
