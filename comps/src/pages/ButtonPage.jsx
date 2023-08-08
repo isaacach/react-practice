@@ -5,7 +5,7 @@ export default function ButtonPage() {
   return (
     <div>
       <div>
-        <Button primary rounded outline>
+        <Button primary rounded >
           <DiVisualstudio />
           VS Code
         </Button>
