@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import classNames from "classnames";
-import { useContext } from "react";
-import  NavigationContext  from "../context/navigation";
+import useNavigation from "../hooks/use-navigation";
 
-export default function Link({ to, children }) {
-  const { navigate } = useContext(NavigationContext);
+export default function Link({ to, children, className, activeClassName }) {
+  const { navigate, currentPath } = useNavigation();
 
-  const classes = classNames('text-blue-500 hover:underline');
+  const classes = classNames('text-blue-500', 
+  className,
+  currentPath === to && activeClassName,
+  );
 
   const handleClick = (e) => {
     if (event.metaKey || event.ctrlKey) {
