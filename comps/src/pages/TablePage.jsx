@@ -16,7 +16,7 @@ export default function TablePage() {
     },
     {
       label: 'color',
-      render: (fruit) => <div className={`w-8 h-8 rounded-full ${fruit.color}`}></div>
+      render: (fruit) => <div className={fruit.color}></div>
     },
     {
       label: 'score',

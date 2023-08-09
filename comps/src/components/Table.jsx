@@ -4,14 +4,14 @@ export default function Table({ data, config }) {
   const renderedData = data.map((fruit) => {
     const renderedCells = config.map((col) => {
       return (
-        <td key={col.label} className="p-3">
+        <td key={col.label} className="p-3 text-center">
           {col.render(fruit)}
         </td>
       );
     });
 
     return (
-      <tr key={fruit.name} className="border-b-2 border-gray-500">
+      <tr key={fruit.name} className="border-b-2 border-gray-300">
         {renderedCells}
       </tr>
     );
