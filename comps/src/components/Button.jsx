@@ -22,7 +22,7 @@ export default function Button({ children, primary, secondary, success, warning,
     }
   }
 
-  const classes = className( rest.className, 'flex items-center gap-1 px-3, py-2 border-2', {
+  const classes = className( rest.className, 'flex items-center gap-1 px-3 py-2 border-2 cursor pointer', {
     'bg-blue-500 border-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4': primary,
     'bg-gray-500 border-gray-700 hover:bg-gray-700 text-white font-bold py-2 px-4': secondary,
     'bg-green-500 border-green-700 hover:bg-green-700 text-white font-bold py-2 px-4': success,
