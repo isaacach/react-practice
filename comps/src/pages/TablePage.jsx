@@ -11,25 +11,25 @@ export default function TablePage() {
 
   const config = [
     {
-      label: 'fruit',
+      label: 'Fruit',
       render: (fruit) => fruit.name
     },
     {
-      label: 'color',
-      render: (fruit) => <div className={fruit.color}></div>
+      label: 'Color',
+      render: (fruit) => <div className={`p-3 m-2 w-4 ${fruit.color}`}></div>
     },
     {
-      label: 'score',
+      label: 'Score',
       render: (fruit) => fruit.score,
-      sort: (a, b) => {
-        
-      }
+      header: () => <th className="bg-red-500"></th>
     }
   ]
 
+  const keyFn = (fruit) => fruit.name;
+
   return (
     <div>
-      <Table data={fruit} config={config}/>
+      <Table data={fruit} config={config} keyFn={keyFn}/>
     </div>
   )
 

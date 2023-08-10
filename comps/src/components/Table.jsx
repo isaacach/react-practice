@@ -1,27 +1,28 @@
 /* eslint-disable react/prop-types */
+import { Fragment } from "react";
 
-export default function Table({ data, config }) {
-  const renderedData = data.map((fruit) => {
-    const renderedCells = config.map((col) => {
-      return (
-        <td key={col.label} className="p-3 text-center">
-          {col.render(fruit)}
-        </td>
-      );
-    });
-
+export default function Table({ data, config, keyFn }) {
+  const renderedHeaders = config.map((col) => {
+    if (col.header) return <Fragment key={col.label}>col.header()</Fragment>;
     return (
-      <tr key={fruit.name} className="border-b-2 border-gray-300">
-        {renderedCells}
-      </tr>
+      <th key={col.label} className="px-4 py-2">
+        {col.label}
+      </th>
     );
   });
 
-  const renderedHeaders = config.map((col, index) => {
+  const renderedData = data.map((rowData) => {
+    const renderedCells = config.map((col) => {
+      return (
+        <td key={col.label} className="p-3 text-center">
+          {col.render(rowData)}
+        </td>
+      );
+    });
     return (
-      <th key={index} className="px-4 py-2">
-        {col.label}
-      </th>
+      <tr key={keyFn(rowData)} className="border-b-2 border-gray-300">
+        {renderedCells}
+      </tr>
     );
   });
 
