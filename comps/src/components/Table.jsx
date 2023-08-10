@@ -3,7 +3,7 @@ import { Fragment } from "react";
 
 export default function Table({ data, config, keyFn }) {
   const renderedHeaders = config.map((col) => {
-    if (col.header) return <Fragment key={col.label}>col.header()</Fragment>;
+    if (col.header) return <Fragment key={col.label}>{col.header()}</Fragment>;
     return (
       <th key={col.label} className="px-4 py-2">
         {col.label}
