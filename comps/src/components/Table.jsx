@@ -14,7 +14,7 @@ export default function Table({ data, config, keyFn }) {
   const renderedData = data.map((rowData) => {
     const renderedCells = config.map((col) => {
       return (
-        <td key={col.label} className="p-3 text-center">
+        <td key={col.label} className="p-3">
           {col.render(rowData)}
         </td>
       );

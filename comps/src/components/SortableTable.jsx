@@ -8,35 +8,13 @@ export default function SortableTable(props) {
   const [sortBy, setSortBy] = useState(null);
   const { config, data } = props;
 
-  const getIcons = (label, sortBy, sortOrder) => {
-    if (label !== sortBy) {
-      return (
-        <div>
-          <GoTriangleUp />
-          <GoTriangleDown />
-        </div>
-      );
-    }
-
-    if (sortOrder === null) {
-      return (
-        <div>
-          <GoTriangleUp />
-          <GoTriangleDown />
-        </div>
-      );
-    } else if (sortOrder === "asc") {
-      <div>
-        <GoTriangleUp />
-      </div>;
-    } else if (sortOrder === "desc") {
-      <div>
-        <GoTriangleDown />
-      </div>;
-    }
-  };
-
   const handleClick = (label) => {
+    if (sortBy && label !== sortBy) {
+      setSortOrder("asc");
+      setSortBy(label);
+      return;
+    }
+
     if (sortOrder === null) {
       setSortOrder("asc");
       setSortBy(label);
@@ -48,6 +26,27 @@ export default function SortableTable(props) {
       setSortBy(null);
     }
   };
+
+  const updatedConfig = config.map((col) => {
+    if (!col.sortValue) {
+      return col;
+    }
+
+    return {
+      ...col,
+      header: () => (
+        <th
+          onClick={() => handleClick(col.label)}
+          className="cursor-pointer hover:bg-blue-100"
+        >
+          <div className="flex items-center justify-center">
+            {getIcons(col.label, sortBy, sortOrder)}
+            {col.label}
+          </div>
+        </th>
+      ),
+    };
+  });
 
   let sortedData = data;
   if (sortOrder && sortBy) {
@@ -66,23 +65,36 @@ export default function SortableTable(props) {
     });
   }
 
-  const updatedConfig = config.map((col) => {
-    if (!col.sortValue) {
-      return col;
-    }
-
-    return {
-      ...col,
-      header: () => (
-        <th onClick={() => handleClick(col.label)}>
-          <div className="flex items-center">
-            {getIcons(col.label, sortBy, sortOrder)}
-            {col.label}
-          </div>
-        </th>
-      ),
-    };
-  });
-
   return <Table {...props} data={sortedData} config={updatedConfig} />;
+}
+function getIcons(label, sortBy, sortOrder) {
+  if (label !== sortBy) {
+    return (
+      <div>
+        <GoTriangleUp />
+        <GoTriangleDown />
+      </div>
+    );
+  }
+
+  if (sortOrder === null) {
+    return (
+      <div>
+        <GoTriangleUp />
+        <GoTriangleDown />
+      </div>
+    );
+  } else if (sortOrder === "asc") {
+    return (
+      <div>
+        <GoTriangleUp />
+      </div>
+    );
+  } else if (sortOrder === "desc") {
+    return (
+      <div>
+        <GoTriangleDown />
+      </div>
+    );
+  }
 }

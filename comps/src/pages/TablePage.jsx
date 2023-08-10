@@ -2,7 +2,7 @@
 import SortableTable from "../components/SortableTable";
 
 export default function TablePage() {
-  const fruit = [
+  const data = [
     { name: 'Orange', color: 'bg-orange-500', score: 5 },
     { name: 'Apple', color: 'bg-red-500', score: 3 },
     { name: 'Banana', color: 'bg-yellow-500', score: 4 },
@@ -31,7 +31,7 @@ export default function TablePage() {
 
   return (
     <div>
-      <SortableTable data={fruit} config={config} keyFn={keyFn}/>
+      <SortableTable data={data} config={config} keyFn={keyFn}/>
     </div>
   )
 
