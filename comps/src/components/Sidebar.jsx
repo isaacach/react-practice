@@ -6,7 +6,8 @@ export default function Sidebar() {
     { label: 'Button', path: '/button'},
     { label: 'Accordion', path: '/accordion'},
     { label: 'Modal', path: '/modal'},
-    { label: 'Table', path: '/table'}
+    { label: 'Table', path: '/table'},
+    { label: 'Counter', path: '/counter'}
   ];
 
   const renderedLinks = links.map((link) => {
