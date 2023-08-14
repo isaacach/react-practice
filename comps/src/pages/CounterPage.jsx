@@ -6,23 +6,17 @@ import Panel from "../components/Panel";
 const reducer = (state, action) => {
   switch (action.type) {
     case "increment":
-      return {
-        ...state,
-        count: state.count + 1,
-      };
+      return { ...state, count: state.count + 1 };
     case "decrement":
-      return {
-        ...state,
-        count: state.count - 1,
-      };
+      return { ...state, count: state.count - 1 };
     case "setValueToAdd":
-      return {
-        ...state,
-        valueToAdd: action.payload,
-      };
+      return { ...state, valueToAdd: action.payload };
+    case "addValueToCount":
+      return { ...state, count: state.count + state.valueToAdd, valueToAdd: 0 };
     default:
-      return state;
+      throw new Error('Invalid action type');
   }
+  
 };
 
 export default function CounterPage({ initialCount }) { 
@@ -31,19 +25,24 @@ export default function CounterPage({ initialCount }) {
     valueToAdd: 0,
   });
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+  const increment = () => {
+    dispatch({ type: "increment" });
+  };
+
+  const decrement = () => {
+    dispatch({ type: "decrement" });
+  };
 
   const handleChange = (e) => {
     const value = parseInt(e.target.value) || 0;
 
-    setValueToAdd(value);
+    dispatch({ type: "setValueToAdd", payload: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCount(count + valueToAdd);
-    setValueToAdd(0);
+
+    dispatch({ type: "addValueToCount" });
   };
 
   
@@ -52,14 +51,14 @@ export default function CounterPage({ initialCount }) {
       <h1 className="font-bold text-4xl">Counter</h1>
       <div className="flex">
         <Button primary rounded onClick={increment}>+</Button>
-        <div className="text-4xl font-bold">{count}</div>
+        <div className="text-4xl font-bold">{state.count}</div>
         <Button primary rounded onClick={decrement}>-</Button>
       </div>
       <form onSubmit={handleSubmit}>
         <label>Add a lot!</label>
         <input 
         className="border border-gray-400 rounded p-1 m-1"
-        value={valueToAdd || ''}
+        value={state.valueToAdd || ''}
         onChange={handleChange}
         type="number" 
         />
