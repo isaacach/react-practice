@@ -8,8 +8,8 @@ function App() {
   };
 
   return (
-    <div className="container is-fluid">
-      <button onClick={() => handleResetClick()} className="button is-danger">
+    <div className="container">
+      <button onClick={() => handleResetClick()} className="button-reset">
         Reset Both Playlists
       </button>
       <hr />

@@ -35,7 +35,7 @@ function MoviePlaylist() {
         <div className="buttons">
           <button
             onClick={() => handleMovieAdd(createRandomMovie())}
-            className="button is-link"
+            className="button-add"
           >
             + Add Movie to Playlist
           </button>

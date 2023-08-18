@@ -35,7 +35,7 @@ function SongPlaylist() {
         <div className="buttons">
           <button
             onClick={() => handleSongAdd(createRandomSong())}
-            className="button is-link"
+            className="button-add"
           >
             + Add Song to Playlist
           </button>
