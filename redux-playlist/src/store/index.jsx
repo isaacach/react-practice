@@ -19,12 +19,14 @@ const store = configureStore({
   }
 })
 
+
+
 const startingState = store.getState();
 console.log(JSON.stringify(startingState));
 
 store.dispatch({
   type: 'song/addSong',
-  paylod: 'new song1'
+  payload: 'new song1'
 });
 
 const finalState = store.getState();
